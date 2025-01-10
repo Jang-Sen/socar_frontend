@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ const Login = () => {
 
       <Form onSubmit={loginHandler}>
         <Form.Group controlId="formEmail" className="mb-3">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>이메일</Form.Label>
           <Form.Control
             type="email"
             placeholder="이메일을 입력하세요."
@@ -53,7 +53,7 @@ const Login = () => {
         </Form.Group>
 
         <Form.Group controlId="formPassword" className="mb-3">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>비밀번호</Form.Label>
           <Form.Control
             type="password"
             placeholder="비밀번호를 입력하세요."
@@ -66,11 +66,14 @@ const Login = () => {
         <Button variant="primary" type="submit" className="w-100">
           로그인
         </Button>
-      </Form>
 
-      <div className="text-center mt-3">
-        <a href="/signup">회원가입</a>
-      </div>
+        <Link to="/newPassword" className="btn btn-outline-primary w-50">
+          비밀번호 재설정
+        </Link>
+        <Link to="/signup" className="btn btn-outline-primary w-50">
+          회원가입
+        </Link>
+      </Form>
     </Container>
   );
 };
