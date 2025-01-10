@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, Container, Form, InputGroup } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -11,11 +12,20 @@ const Signup = () => {
   const [address, setAddress] = useState("");
   const [otp, setOtp] = useState("");
 
+  const [terms, setTerms] = useState({
+    agreeOfTerm: false,
+    agreeFourteen: false,
+    agreeOfService: false,
+    agreeOfEvent: false,
+  });
+
   const [emailSend, setEmailSend] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
 
   // otp 전송
   const sendEmailOTP = async () => {
@@ -54,6 +64,8 @@ const Signup = () => {
         setError("인증번호가 일치하지 않습니다.");
         setSuccess("");
       }
+
+      navigate("/login");
     } catch (err) {
       setEmailVerified(false);
       setError("이메일 인증에 실패했습니다. 다시 시도해주세요.");
@@ -92,12 +104,18 @@ const Signup = () => {
       return;
     }
 
+    if (!terms.agreeOfTerm || !terms.agreeFourteen || !terms.agreeOfService) {
+      setError("필수 약관에 동의해주세요.");
+      return;
+    }
+
     const signupInput = {
       email,
       password,
       username: name,
       phone,
       address,
+      term: terms,
     };
 
     console.log(signupInput);
@@ -200,13 +218,66 @@ const Signup = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formAddress" className="mb-3">
+        <Form.Group controlId="formAddress" className="mb-5">
           <Form.Label>주소</Form.Label>
           <Form.Control
             type="text"
             placeholder="주소를 입력하세요."
             value={address}
             onChange={(event) => setAddress(event.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formTerms" className="mb-3">
+          <Form.Check
+            type="checkbox"
+            label="(필수) 이용약관에 동의합니다."
+            checked={terms.agreeOfTerm}
+            onChange={(event) =>
+              setTerms((prevTerms) => ({
+                ...prevTerms, // 기존 상태 복사
+                agreeOfTerm: event.target.checked, // 특정 필드만 업데이트
+              }))
+            }
+            required
+          />
+
+          <Form.Check
+            type="checkbox"
+            label="(필수) 만 14세 이상임을 확인합니다."
+            checked={terms.agreeFourteen}
+            onChange={(event) =>
+              setTerms((prevTerms) => ({
+                ...prevTerms, // 기존 상태 복사
+                agreeFourteen: event.target.checked, // 특정 필드만 업데이트
+              }))
+            }
+            required
+          />
+
+          <Form.Check
+            type="checkbox"
+            label="(필수) 서비스 이용 약관에 동의합니다."
+            checked={terms.agreeOfService}
+            onChange={(event) =>
+              setTerms((prevTerms) => ({
+                ...prevTerms, // 기존 상태 복사
+                agreeOfService: event.target.checked, // 특정 필드만 업데이트
+              }))
+            }
+            required
+          />
+
+          <Form.Check
+            type="checkbox"
+            label="(선택) 이벤트 정보 수신에 동의합니다."
+            checked={terms.agreeOfEvent}
+            onChange={(event) =>
+              setTerms((prevTerms) => ({
+                ...prevTerms, // 기존 상태 복사
+                agreeOfEvent: event.target.checked, // 특정 필드만 업데이트
+              }))
+            }
           />
         </Form.Group>
 
