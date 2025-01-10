@@ -6,6 +6,8 @@ import Car from "./page/Car";
 import Login from "./page/Login";
 import Signup from "./page/Signup";
 import Service from "./page/Service";
+import CarDetail from "./page/CarDetail";
+import NewPassword from "./page/NewPassword";
 
 const router = createBrowserRouter([
   {
@@ -19,16 +21,24 @@ const router = createBrowserRouter([
         element: <Main />,
       },
       {
-        path: "/car",
-        element: <Car />,
-      },
-      {
         path: "/login",
         element: <Login />,
       },
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/newPassword",
+        element: <NewPassword />,
+      },
+      {
+        path: "/car",
+        element: <Car />,
+      },
+      {
+        path: "/carDetail/:id",
+        element: <CarDetail />,
       },
       {
         path: "/service",
