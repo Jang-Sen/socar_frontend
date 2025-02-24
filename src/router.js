@@ -3,11 +3,12 @@ import App from "./App";
 import Error from "./page/Error";
 import Main from "./page/Main";
 import Car from "./page/Car";
-import Login from "./page/Login";
-import Signup from "./page/Signup";
+import Login from "./page/Auth/Login";
+import Signup from "./page/Auth/Signup";
 import Service from "./page/Service";
 import CarDetail from "./page/CarDetail";
-import NewPassword from "./page/NewPassword";
+import UpdatePassword from "./page/Auth/UpdatePassword";
+import NewPassword from "./page/Auth/NewPassword";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/newPassword",
+        path: "/update/password",
+        element: <UpdatePassword />,
+      },
+      {
+        path: "/new/password",
         element: <NewPassword />,
       },
       {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useLogin } from "../../hook/useAuthentication";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ const Login = () => {
 
   const [error, setError] = useState("");
 
-  const navigate = useNavigate();
+  const loginMutation = useLogin();
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -19,19 +19,17 @@ const Login = () => {
       return;
     }
 
-    try {
-      await axios.post("http://localhost/api/v1/auth/login", {
-        email,
-        password,
-      });
-
-      setError("");
-
-      navigate("/");
-    } catch (err) {
-      setError("존재하지 않는 회원입니다.");
-      console.log(err.message);
-    }
+    loginMutation.mutate(
+      { email, password },
+      {
+        onSuccess: () => {
+          setError("");
+        },
+        onError: () => {
+          setError("존재하지 않는 회원입니다.");
+        },
+      },
+    );
   };
 
   return (
@@ -48,7 +46,6 @@ const Login = () => {
             placeholder="이메일을 입력하세요."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
         </Form.Group>
 
@@ -59,7 +56,6 @@ const Login = () => {
             placeholder="비밀번호를 입력하세요."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
         </Form.Group>
 
@@ -67,7 +63,7 @@ const Login = () => {
           로그인
         </Button>
 
-        <Link to="/newPassword" className="btn btn-outline-primary w-50">
+        <Link to="/new/password" className="btn btn-outline-primary w-50">
           비밀번호 재설정
         </Link>
         <Link to="/signup" className="btn btn-outline-primary w-50">
