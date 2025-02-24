@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import axios from "axios";
+import { useSearchParams } from "react-router-dom";
+import { useUpdatePassword } from "../../hook/useResetPassword";
 
 const UpdatePassword = () => {
   const [searchParam] = useSearchParams();
   const token = searchParam.get("token");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/login");
-    }
-  }, []);
+  const updatePasswordMutation = useUpdatePassword();
 
   const passwordValidate = (password) => {
     const regex =
@@ -43,16 +38,20 @@ const UpdatePassword = () => {
       return;
     }
 
-    try {
-      await axios.post("http://localhost/api/v1/auth/update/password", {
+    updatePasswordMutation.mutate(
+      {
         token,
         password: newPassword,
-      });
-      setSuccess("비밀번호가 성공적으로 변경되었습니다.");
-    } catch (err) {
-      setError("비밀번호 변경 토큰이 일치하지 않습니다.");
-      console.log(err.message);
-    }
+      },
+      {
+        onSuccess: () => {
+          setSuccess("비밀번호가 성공적으로 변경되었습니다.");
+        },
+        onError: () => {
+          setError("비밀번호 변경 토큰이 일치하지 않습니다.");
+        },
+      },
+    );
   };
 
   return (
@@ -85,7 +84,12 @@ const UpdatePassword = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit" className="w-100">
+        <Button
+          variant="primary"
+          type="submit"
+          className="w-100"
+          disabled={!newPassword || !confirmPassword}
+        >
           비밀번호 변경
         </Button>
       </Form>
