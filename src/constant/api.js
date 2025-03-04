@@ -4,6 +4,9 @@ export const API_ENDPOINT = {
   AUTH: {
     SIGNUP: `${BASE_URL}/auth/signup`,
     LOGIN: `${BASE_URL}/auth/login`,
+    USER_INFO: `${BASE_URL}/auth`,
+    UPDATE_PROFILE: `${BASE_URL}/user`,
+    REFRESH: `${BASE_URL}/auth/refresh`,
     SEND_EMAIL: `${BASE_URL}/auth/email/send`,
     CHECK_EMAIL: `${BASE_URL}/auth/email/check`,
     FIND_PASSWORD: `${BASE_URL}/auth/find/password`,

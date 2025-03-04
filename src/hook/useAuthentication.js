@@ -1,14 +1,19 @@
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { API_ENDPOINT } from "../constant/api";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../api/apiInstanse";
+import Cookies from "js-cookie";
+import { useAuth } from "../context/authContext";
 
 export const useSignup = () => {
   const navigate = useNavigate();
 
   return useMutation({
     mutationFn: async (userData) => {
-      const response = await axios.post(API_ENDPOINT.AUTH.SIGNUP, userData);
+      const response = await axiosInstance.post(
+        API_ENDPOINT.AUTH.SIGNUP,
+        userData,
+      );
 
       return response.data;
     },
@@ -22,17 +27,27 @@ export const useSignup = () => {
 };
 
 export const useLogin = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   return useMutation({
     mutationFn: async ({ email, password }) => {
-      const response = await axios.post(API_ENDPOINT.AUTH.LOGIN, {
+      const response = await axiosInstance.post(API_ENDPOINT.AUTH.LOGIN, {
         email,
         password,
       });
 
       return response.data;
     },
-    onSuccess: () => {
-      alert("로그인 완료");
+    onSuccess: (data) => {
+      Cookies.set("accessToken", data.accessToken, {
+        expires: 1,
+        secure: true,
+      });
+
+      login(data.accessToken);
+
+      navigate("/profile");
     },
     onError: (error) => {
       console.error("Error Login: ", error.response.data.message);

@@ -13,6 +13,7 @@ import Main from "./page/Main";
 const router = createBrowserRouter([
   {
     element: <Layout />,
+    index: <Main />,
     children: [
       {
         element: <PublicRoute />,
