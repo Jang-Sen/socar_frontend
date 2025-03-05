@@ -15,7 +15,6 @@ import CarDetail from "./page/Car/CarDetail";
 const router = createBrowserRouter([
   {
     element: <Layout />,
-    index: <Main />,
     children: [
       {
         element: <PublicRoute />,

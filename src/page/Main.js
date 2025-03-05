@@ -9,10 +9,10 @@ const Main = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://via.placeholder.com/1200x400"
+            src="https://www.socar.kr/images/usp_a.jpg"
             alt="First slide"
           />
-          <Carousel.Caption>
+          <Carousel.Caption style={{ color: "black" }}>
             <h3>편리한 차량 공유 서비스</h3>
             <p>어디서든 차량을 쉽게 이용하세요.</p>
           </Carousel.Caption>
@@ -20,10 +20,10 @@ const Main = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://via.placeholder.com/1200x400"
+            src="https://www.socar.kr/images/usp_d.jpg"
             alt="Second slide"
           />
-          <Carousel.Caption>
+          <Carousel.Caption style={{ color: "black" }}>
             <h3>다양한 차량 선택</h3>
             <p>필요에 맞는 차량을 선택하세요.</p>
           </Carousel.Caption>
@@ -31,7 +31,7 @@ const Main = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://via.placeholder.com/1200x400"
+            src="https://www.socar.kr/images/usp_b.jpg"
             alt="Third slide"
           />
           <Carousel.Caption>
@@ -49,7 +49,7 @@ const Main = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://via.placeholder.com/300x200"
+                src="https://www.socar.kr/images/guide-head.jpg"
               />
               <Card.Body>
                 <Card.Title>차량 대여</Card.Title>
@@ -64,7 +64,7 @@ const Main = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://via.placeholder.com/300x200"
+                src="https://www.socar.kr/images/benefit-head.jpg"
               />
               <Card.Body>
                 <Card.Title>숙소 예약</Card.Title>
@@ -79,7 +79,7 @@ const Main = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://via.placeholder.com/300x200"
+                src="https://www.socar.kr/images/service-head.jpg"
               />
               <Card.Body>
                 <Card.Title>안전한 주행</Card.Title>
