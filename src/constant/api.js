@@ -17,4 +17,8 @@ export const API_ENDPOINT = {
     NAVER: `${BASE_URL}/auth/naver`,
     KAKAO: `${BASE_URL}/auth/kakao`,
   },
+  CAR: {
+    LIST: `${BASE_URL}/car/findAll`,
+    DETAIL: `${BASE_URL}/car/find/:id`,
+  },
 };

@@ -9,6 +9,8 @@ import Service from "./page/Service";
 import ProtectRoute from "./component/ProtectRoute";
 import Profile from "./page/Profile";
 import Main from "./page/Main";
+import Car from "./page/Car/Car";
+import CarDetail from "./page/Car/CarDetail";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
           {
             path: "/service",
             element: <Service />,
+          },
+          {
+            path: "/car",
+            element: <Car />,
+          },
+          {
+            path: "/carDetail/:id",
+            element: <CarDetail />,
           },
         ],
       },
@@ -81,14 +91,8 @@ const router = createBrowserRouter([
   //       path: "/new/password",
   //       element: <NewPassword />,
   //     },
-  //     {
-  //       path: "/car",
-  //       element: <Car />,
-  //     },
-  //     {
-  //       path: "/carDetail/:id",
-  //       element: <CarDetail />,
-  //     },
+  //
+
   //     {
   //       path: "/service",
   //       element: <Service />,
