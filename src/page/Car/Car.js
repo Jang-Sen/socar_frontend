@@ -48,6 +48,12 @@ const Car = () => {
     }
   };
 
+  const cardImageStyle = {
+    width: "100%",
+    aspectRatio: "16/4",
+    objectFit: "cover",
+  };
+
   // const getCar = async () => {
   //   try {
   //     const response = await axios.get(
@@ -62,10 +68,11 @@ const Car = () => {
 
   return (
     <Container className="mt-3">
-      <Card className="text-black">
+      <Card className="text-white">
         <Card.Img
-          src="https://www.socar.kr/images/guide-head.jpg"
+          src="/images/car_list.jpg"
           alt="차량 목록"
+          style={cardImageStyle}
         />
         <Card.ImgOverlay className="d-flex flex-column align-items-center justify-content-center text-center">
           <h2 className="image-overlay">차량 목록</h2>

@@ -2,6 +2,18 @@ import React from "react";
 import { Button, Card, Carousel, Col, Container, Row } from "react-bootstrap";
 
 const Main = () => {
+  const imageStyle = {
+    width: "1338px",
+    height: "1002.83px",
+    objectFit: "cover",
+  };
+
+  const cardImageStyle = {
+    width: "100%",
+    aspectRatio: "16/9",
+    objectFit: "cover",
+  };
+
   return (
     <div>
       {/* 캐러셀 */}
@@ -9,10 +21,11 @@ const Main = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://www.socar.kr/images/usp_a.jpg"
+            src="/images/rent_car.jpg"
             alt="First slide"
+            style={imageStyle}
           />
-          <Carousel.Caption style={{ color: "black" }}>
+          <Carousel.Caption>
             <h3>편리한 차량 공유 서비스</h3>
             <p>어디서든 차량을 쉽게 이용하세요.</p>
           </Carousel.Caption>
@@ -20,10 +33,11 @@ const Main = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://www.socar.kr/images/usp_d.jpg"
+            src="/images/many_car.jpg"
             alt="Second slide"
+            style={imageStyle}
           />
-          <Carousel.Caption style={{ color: "black" }}>
+          <Carousel.Caption>
             <h3>다양한 차량 선택</h3>
             <p>필요에 맞는 차량을 선택하세요.</p>
           </Carousel.Caption>
@@ -31,10 +45,11 @@ const Main = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://www.socar.kr/images/usp_b.jpg"
+            src="/images/pay.jpg"
             alt="Third slide"
+            style={imageStyle}
           />
-          <Carousel.Caption>
+          <Carousel.Caption style={{ color: "black" }}>
             <h3>합리적인 가격</h3>
             <p>저렴한 가격으로 차량을 이용하세요.</p>
           </Carousel.Caption>
@@ -49,7 +64,8 @@ const Main = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://www.socar.kr/images/guide-head.jpg"
+                src="/images/car_list.jpg"
+                style={cardImageStyle}
               />
               <Card.Body>
                 <Card.Title>차량 대여</Card.Title>
@@ -64,7 +80,8 @@ const Main = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://www.socar.kr/images/benefit-head.jpg"
+                src="/images/accommodation.jpg"
+                style={cardImageStyle}
               />
               <Card.Body>
                 <Card.Title>숙소 예약</Card.Title>
@@ -79,7 +96,8 @@ const Main = () => {
             <Card>
               <Card.Img
                 variant="top"
-                src="https://www.socar.kr/images/service-head.jpg"
+                src="/images/drive.jpg"
+                style={cardImageStyle}
               />
               <Card.Body>
                 <Card.Title>안전한 주행</Card.Title>
