@@ -33,6 +33,9 @@ const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link onClick={() => navigate("/car")}>차량 목록</Nav.Link>
+              <Nav.Link onClick={() => navigate("/accommodation")}>
+                숙소 목록
+              </Nav.Link>
             </Nav>
             <Nav className="ms-auto">
               <Nav.Link onClick={() => navigate("/service")}>

@@ -84,7 +84,9 @@ const Main = () => {
               <Card.Body>
                 <Card.Title>안전한 주행</Card.Title>
                 <Card.Text>보험과 함께 안전하게 주행하세요.</Card.Text>
-                <Button variant="primary">자세히 보기</Button>
+                <Button variant="primary" href="/service">
+                  자세히 보기
+                </Button>
               </Card.Body>
             </Card>
           </Col>

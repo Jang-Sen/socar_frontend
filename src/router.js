@@ -11,6 +11,7 @@ import Profile from "./page/Profile";
 import Main from "./page/Main";
 import Car from "./page/Car/Car";
 import CarDetail from "./page/Car/CarDetail";
+import Accommodation from "./page/Accommodation/Accommodation";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: "/carDetail/:id",
             element: <CarDetail />,
+          },
+          {
+            path: "/accommodation",
+            element: <Accommodation />,
           },
         ],
       },
