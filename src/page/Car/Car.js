@@ -61,11 +61,22 @@ const Car = () => {
   // };
 
   return (
-    <Container className="mt-5">
-      <h2 className="text-center mb-4">차량 목록</h2>
+    <Container className="mt-3">
+      <Card className="text-black">
+        <Card.Img
+          src="https://www.socar.kr/images/guide-head.jpg"
+          alt="차량 목록"
+        />
+        <Card.ImgOverlay className="d-flex flex-column align-items-center justify-content-center text-center">
+          <h2 className="image-overlay">차량 목록</h2>
+          <h5 className="image-overlay">
+            예약부터 반납까지 간편하게 이용하세요.
+          </h5>
+        </Card.ImgOverlay>
+      </Card>
 
       {/* Take 설정 */}
-      <div className="d-flex justify-content-end mb-2">
+      <div className="d-flex justify-content-end mt-3 mb-2">
         <select
           id="numberSelect"
           value={take}
@@ -85,7 +96,7 @@ const Car = () => {
 
       <Row>
         {cars?.data?.map((car) => (
-          <Col key={car.id} sm={12} md={6} lg={4} className="mb-4">
+          <Col key={car.id} sm={12} md={6} lg={4} className="mb-4 mt-3">
             <Card>
               <Card.Img
                 variant="top"
