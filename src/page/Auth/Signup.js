@@ -12,7 +12,11 @@ import {
 import { useSignup } from "../../hook/useAuthentication";
 import { useSendEmail, useVerifyEmail } from "../../hook/useVerification";
 import { agreementItems, socialMenu } from "../../common";
-import { useGoogleLogin } from "../../hook/useSocialLogin";
+import {
+  useGoogleLogin,
+  useKakaoLogin,
+  useNaverLogin,
+} from "../../hook/useSocialLogin";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -33,7 +37,9 @@ const Signup = () => {
   const signupMutation = useSignup();
   const sendEmailMutation = useSendEmail();
   const verifyEmailMutation = useVerifyEmail();
-  const googleLoginMutation = useGoogleLogin();
+  const { mutate: googleLogin } = useGoogleLogin();
+  const { mutate: naverLogin } = useNaverLogin();
+  const { mutate: kakaoLogin } = useKakaoLogin();
 
   // 이용 약관 초기 상태 설정 (전체 동의 포함)
   const initialAgreements = Object.fromEntries([
@@ -73,8 +79,14 @@ const Signup = () => {
   };
 
   // 소셜 로그인 핸들러
-  const socialLoginHandler = async () => {
-    googleLoginMutation.mutate();
+  const socialLoginHandler = async (platform) => {
+    if (platform === "google") {
+      googleLogin();
+    } else if (platform === "naver") {
+      naverLogin();
+    } else if (platform === "kakao") {
+      kakaoLogin();
+    }
   };
 
   // otp 전송
@@ -182,7 +194,7 @@ const Signup = () => {
             textAlign: "center",
           }}
         >
-          SNS 계정으로 간편하게 회원가입
+          SNS 계정으로 간편하게 로그인 / 회원가입
         </text>
         <div
           style={{

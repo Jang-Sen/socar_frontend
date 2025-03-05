@@ -13,6 +13,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     Cookies.remove("accessToken");
     Cookies.remove("refreshToken");
+    Cookies.remove("Authentication");
+    Cookies.remove("Refresh");
 
     setUser(null);
   };
