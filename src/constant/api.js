@@ -1,4 +1,5 @@
 export const BASE_URL = "http://localhost:81/api/v1";
+export const DOMAIN_URL = "http://jangsen.duckdns.org:81/api/v1";
 
 export const API_ENDPOINT = {
   AUTH: {

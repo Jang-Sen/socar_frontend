@@ -1,17 +1,17 @@
-import React from "react";
-import { Button, Card, Carousel, Col, Container, Row } from "react-bootstrap";
+import React from 'react';
+import { Button, Card, Carousel, Col, Container, Row } from 'react-bootstrap';
 
 const Main = () => {
   const imageStyle = {
-    width: "1338px",
-    height: "1002.83px",
-    objectFit: "cover",
+    width: '1338px',
+    height: '1002.83px',
+    objectFit: 'cover',
   };
 
   const cardImageStyle = {
-    width: "100%",
-    aspectRatio: "16/9",
-    objectFit: "cover",
+    width: '100%',
+    aspectRatio: '16/9',
+    objectFit: 'cover',
   };
 
   return (
@@ -49,7 +49,7 @@ const Main = () => {
             alt="Third slide"
             style={imageStyle}
           />
-          <Carousel.Caption style={{ color: "black" }}>
+          <Carousel.Caption style={{ color: 'black' }}>
             <h3>합리적인 가격</h3>
             <p>저렴한 가격으로 차량을 이용하세요.</p>
           </Carousel.Caption>
@@ -114,7 +114,7 @@ const Main = () => {
       {/* 푸터 */}
       <footer className="bg-dark text-white text-center py-4 mt-5">
         <Container>
-          <p>© 2025 Socar Clone. All Rights Reserved.</p>
+          <p>© 2025 WAVOCAR. All Rights Reserved.</p>
         </Container>
       </footer>
     </div>

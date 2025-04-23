@@ -27,7 +27,7 @@ const NavBar = () => {
             style={{ cursor: "pointer" }}
             onClick={() => navigate("/")}
           >
-            Socar Clone
+            WAVOCAR
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
